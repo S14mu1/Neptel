@@ -1,5 +1,10 @@
+import { Particles } from "@/app/components/magicui/particles";
+
+
 export default function Hero() {
   return (
+
+
     <section className="min-h-screen flex items-center justify-center px-6 sm:px-12 text-center">
       <div className="max-w-3xl">
         <h1 className="text-4xl sm:text-6xl font-bold mb-6">Privacy-first AI for Modern Organizations</h1>
