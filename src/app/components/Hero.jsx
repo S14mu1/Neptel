@@ -1,11 +1,14 @@
+"use client";
+
 import { Particles } from "@/app/components/magicui/particles";
 import { AuroraText } from "@/app/components/magicui/aurora-text";
 import { ShimmerButton } from "@/app/components/magicui/shimmer-button";
+import { ChevronRight } from "lucide-react";
 
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-start justify-center px-6 sm:px-12 text-center overflow-hidden pt-44 sm:pt-62">
+    <section className="relative min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-12 text-center overflow-hidden pt-28 sm:pt-36 lg:pt-44">
       <Particles
         className="absolute inset-0 -z-0"
         quantity={300}
@@ -15,13 +18,20 @@ export default function Hero() {
         size={1}
       />
       <div className="max-w-5xl relative z-10">
-        <span className="text-4xl sm:text-8xl font-bold">Privacy-first <AuroraText colors={["#0549ff", "#5d3ac7", "#0549ff", "#0549ff", "#5d3ac7", "#0549ff"]} speed={2}>AI</AuroraText> for <br/> <span className="sm:text-7xl tracking-wider">Modern Organizations</span></span>
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+            Privacy-first <AuroraText colors={["#0549ff", "#5d3ac7", "#0549ff", "#0549ff", "#5d3ac7", "#0549ff"]} speed={2}>AI</AuroraText> for <br className="hidden sm:block"/> 
+            <span className="text-2xl sm:text-4xl lg:text-6xl xl:text-7xl tracking-wider block mt-2 sm:mt-3">Modern Organizations</span>
+          </span>
   
-        <h1 className="text-4xl sm:text-lg mt-4 mb-8">Neptel empoweres businesses with secure, local AI tools that protect data sovereignty and ensure compliance.</h1>
+          <h1 className="text-base sm:text-lg lg:text-xl max-w-3xl mt-4 mb-8 text-gray-300">
+            Neptel empoweres businesses with secure, local AI tools that protect data sovereignty and ensure compliance.
+          </h1>
+        </div>
 
         <div className="flex justify-center gap-4 flex-wrap">
           <ShimmerButton 
-            className="px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition" 
+            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-gray-200 transition text-sm sm:text-base" 
             shimmerColor="#0549ff"
             background="white"
             shimmerSize="0.2em"
@@ -30,8 +40,16 @@ export default function Hero() {
           </ShimmerButton>
 
           
-          <button className="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition">
+          <button 
+            onClick={() => {
+              document.querySelector('section:nth-of-type(2)').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+            className="border border-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-full hover:bg-white hover:text-black transition text-sm sm:text-base inline-flex items-center gap-2">
             Learn More
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>

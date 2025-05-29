@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { ScrollProgress } from '@/app/components/magicui/scroll-progress';
 
@@ -14,21 +15,27 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold">Neptel</span>
+            <Image
+              src="/NeptelHeaderLogo.png"
+              alt="Neptel Logo"
+              width={120}
+              height={40}
+              className="object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-sm hover:text-primary transition-colors">
+          <nav className="hidden md:flex items-center space-x-12">
+            <Link href="/features" className="text-md hover:text-primary transition-colors">
               Features
             </Link>
-            <Link href="/use-cases" className="text-sm hover:text-primary transition-colors">
+            <Link href="/use-cases" className="text-md hover:text-primary transition-colors">
               Use Cases
             </Link>
-            <Link href="/pricing" className="text-sm hover:text-primary transition-colors">
+            <Link href="/pricing" className="text-md hover:text-primary transition-colors">
               Pricing
             </Link>
-            <Link href="/about" className="text-sm hover:text-primary transition-colors">
+            <Link href="/about" className="text-md hover:text-primary transition-colors">
               About
             </Link>
           </nav>
@@ -91,18 +98,11 @@ export default function Header() {
             </Link>
             <div className="pt-4 space-y-4">
               <Link 
-                href="/login" 
-                className="block text-sm hover:text-primary transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Log in
-              </Link>
-              <Link 
                 href="/get-started" 
                 className="block w-full bg-white text-black px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                Contact Us
                 
               </Link>
               
