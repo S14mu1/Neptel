@@ -1,6 +1,6 @@
 import { Particles } from "@/app/components/magicui/particles";
 import { AuroraText } from "@/app/components/magicui/aurora-text";
-
+import { ShimmerButton } from "@/app/components/magicui/shimmer-button";
 
 
 export default function Hero() {
@@ -20,9 +20,16 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-lg mt-4 mb-8">Neptel empoweres businesses with secure, local AI tools that protect data sovereignty and ensure compliance.</h1>
 
         <div className="flex justify-center gap-4 flex-wrap">
-          <button className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
-            Get Started
-          </button>
+          <ShimmerButton 
+            className="px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition" 
+            shimmerColor="#0549ff"
+            background="white"
+            shimmerSize="0.2em"
+            shimmerDuration="2s">
+            <span className="text-black">Get in Touch</span>
+          </ShimmerButton>
+
+          
           <button className="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition">
             Learn More
           </button>
