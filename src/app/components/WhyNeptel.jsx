@@ -1,6 +1,8 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import { BentoGrid, BentoCard } from "@/app/components/magicui/bento-grid";
-import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare } from 'lucide-react';
+import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare, Files } from 'lucide-react';
 import { IconCloud } from "@/app/components/magicui/icon-cloud";
 import Image from 'next/image';
 
@@ -34,11 +36,11 @@ const features = [
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
   {
-    Icon: () => <Cloud className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
-    name: "Full Data Sovereignty",
-    description: "Choose between cloud, on-premise, or hybrid deployment. Your data, your rules, your infrastructure.",
-    href: "/deployment",
-    cta: "Get Started",
+    Icon: () => <Files className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+    name: "AI-Powered Knowledge Vault",
+    description: "Turn your company's documents into an intelligent knowledge base. All data stays secure within your infrastructure.",
+    href: "/rag-capabilities",
+    cta: "Learn More",
     background: (
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]" />
     ),
@@ -89,13 +91,41 @@ const features = [
 ];
 
 const WhyNeptel = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.6
+      }
+    );
+
+    const section = document.getElementById('why-neptel-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
+
   return (
-    <section className="w-full py-24 px-6 sm:px-12 bg-[#0B0F14] relative overflow-hidden">
+    <section id="why-neptel-section" className="w-full py-24 px-6 sm:px-12 bg-[#0B0F14] relative isolate">
       <div 
-        className="absolute inset-0" 
+        className="absolute inset-0 -top-24 transition-opacity duration-1000" 
         style={{
-          background: 'radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.70), rgba(11, 15, 20, 0.05) 60%, transparent 70%)',
-          pointerEvents: 'none'
+          background: 'radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.90), rgba(11, 15, 20, 0.05) 80%, transparent 90%)',
+          pointerEvents: 'none',
+          opacity: isVisible ? 1 : 0,
+          zIndex: -1
         }}
       />
       <div className="text-center mb-16 relative">
