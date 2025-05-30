@@ -16,9 +16,9 @@ export default function Home() {
       <ProblemStatement />
       <VelocityScrollingData />
       <SolutionStatement />
+      <WhyNeptel />
       <Features />
       <VisionMission />
-      <WhyNeptel />
       <HowItWorks />
       <UseCases />
       <CTA />
