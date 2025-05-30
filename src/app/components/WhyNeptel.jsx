@@ -90,8 +90,15 @@ const features = [
 
 const WhyNeptel = () => {
   return (
-    <section className="w-full py-24 px-6 sm:px-12 bg-[#0B0F14]">
-      <div className="text-center mb-16">
+    <section className="w-full py-24 px-6 sm:px-12 bg-[#0B0F14] relative overflow-hidden">
+      <div 
+        className="absolute inset-0" 
+        style={{
+          background: 'radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.70), rgba(11, 15, 20, 0.05) 60%, transparent 70%)',
+          pointerEvents: 'none'
+        }}
+      />
+      <div className="text-center mb-16 relative">
         <h2 className="text-4xl font-bold text-white mb-4">
           Why Choose Neptel?
         </h2>
@@ -100,7 +107,7 @@ const WhyNeptel = () => {
         </p>
       </div>
       
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
         <BentoGrid className="lg:grid-rows-3 gap-4">
           {features.map((feature) => (
             <BentoCard 
