@@ -38,7 +38,7 @@ const features = [
   {
     Icon: () => <Files className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
     name: "AI-Powered Knowledge Vault",
-    description: "Turn your company's documents into an intelligent knowledge base. All data stays secure within your infrastructure.",
+    description: "Transform internal documents into a knowledge base — fully secured within your infrastructure.",
     href: "/rag-capabilities",
     cta: "Learn More",
     background: (
