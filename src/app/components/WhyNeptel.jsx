@@ -77,7 +77,7 @@ const NetworkBackground = () => {
             minWidth: 200,
             scale: 1.0,
             scaleMobile: 1.0,
-            color: 0x4b8fff,
+            color: 0x0062ff, //rgb(0, 98, 255)
             backgroundColor: 0x0B0F14,
             points: 4,
             maxDistance: 36,
