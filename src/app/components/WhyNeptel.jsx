@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { BentoGrid, BentoCard } from "@/app/components/magicui/bento-grid";
-import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare, Files } from 'lucide-react';
+import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare, Files, Construction } from 'lucide-react';
 import { IconCloud } from "@/app/components/magicui/icon-cloud";
 import Image from 'next/image';
 import { Marquee } from "@/app/components/magicui/marquee";
+import { AnimatedCircularProgressBar } from "@/app/components/magicui/animated-circular-progress-bar";
 
 const files = [
   {
@@ -96,6 +97,42 @@ const NetworkBackground = () => {
   return <div ref={vantaRef} className="absolute inset-0 opacity-50" />;
 };
 
+const ProgressCircle = ({ delay = 0 }) => {
+  const [value, setValue] = useState(delay);
+
+  useEffect(() => {
+    let animationFrame;
+    const startTime = Date.now();
+    
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      // Create a smooth sine wave between 0 and 90
+      const newValue = 45 + 45 * Math.sin(elapsed * 0.001);
+      setValue(newValue);
+      animationFrame = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="scale-75 sm:scale-65 md:scale-60 lg:scale-50 translate-y-[50%]">
+      <AnimatedCircularProgressBar
+        max={100}
+        min={0}
+        value={value}
+        gaugePrimaryColor="rgb(0, 98, 255)"
+        gaugeSecondaryColor="rgba(255, 255, 255, 0.1)"
+      />
+    </div>
+  );
+};
+
 const features = [
   {
     Icon: () => <Server className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
@@ -169,15 +206,17 @@ const features = [
     className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-3 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors overflow-hidden",
   },
   {
-    Icon: () => <Smartphone className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
-    name: "Seamless Integration",
-    description: "Access your AI capabilities from any device while maintaining strict security standards. API-first architecture.",
+    Icon: () => <Construction className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+    name: "LLMs Built Just for You",
+    description: "Neptel offers fine-tuned LLMs, tailored to your exact domain, securely and on-premises.",
     href: "/integration",
     cta: "Get Started",
     background: (
       <div className="relative w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
-        
+          <div className="absolute top-1/2 -translate-y-1/2 inset-x-0 flex justify-center sm:justify-end sm:top-1/3 sm:-translate-y-2/3 sm:right-4 md:right-0 lg:-right-20 sm:pr-8 md:pr-12 lg:pr-16">
+            <ProgressCircle delay={0} />
+          </div>
         </div>
       </div>
     ),
