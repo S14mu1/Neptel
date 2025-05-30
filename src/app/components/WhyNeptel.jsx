@@ -25,7 +25,7 @@ const files = [
     body: "Follow this checklist to ensure your team is fully prepared for the upcoming SOC 2 audit.",
   },
   {
-    name: "faqs.xlsx",
+    name: "client_faqs.xlsx",
     body: "Compiled from real support tickets, this FAQ helps streamline the onboarding experience for new clients.",
   },
   {
@@ -37,8 +37,8 @@ const files = [
     body: "This document provides a high-level view of our current infrastructure, including data flow, core services, and security layers.",
   },
   {
-    name: "migration_plan.docx",
-    body: "The following plan outlines phases, dependencies, and risk mitigation strategies for our cloud infrastructure migration.",
+    name: "q1_goals.docx",
+    body: "The following plan outlines our goals for Q1, together with our mission and vision.",
   },
 ];
 
@@ -62,9 +62,9 @@ const llmLogos = [
 
 const features = [
   {
-    Icon: () => <Shield className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
-    name: "Military-Grade Security",
-    description: "Advanced encryption and security protocols protect your sensitive data at every level. Zero data leaves your infrastructure.",
+    Icon: () => <Server className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+    name: "Your Servers, Your Control",
+    description: "Neptel deploys enterprise-grade AI within your infrastructure. Zero external dependencies, complete data sovereignty and absolute control.",
     href: "/security",
     cta: "Get Started",
     background: (
