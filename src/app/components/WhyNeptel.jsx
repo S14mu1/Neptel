@@ -101,23 +101,15 @@ const ProgressCircle = ({ delay = 0 }) => {
   const [value, setValue] = useState(delay);
 
   useEffect(() => {
-    let animationFrame;
-    const startTime = Date.now();
-    
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      // Create a smooth sine wave between 0 and 90
-      const newValue = 45 + 45 * Math.sin(elapsed * 0.001);
-      setValue(newValue);
-      animationFrame = requestAnimationFrame(animate);
-    };
-    
-    animate();
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
+    const handleIncrement = (prev) => {
+      if (prev >= 99) {
+        return 0;
       }
+      return prev + 1;
     };
+    
+    const interval = setInterval(() => setValue(handleIncrement), 100);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -127,7 +119,7 @@ const ProgressCircle = ({ delay = 0 }) => {
         min={0}
         value={value}
         gaugePrimaryColor="rgb(0, 98, 255)"
-        gaugeSecondaryColor="rgba(255, 255, 255, 0.1)"
+        gaugeSecondaryColor="transparent"
       />
     </div>
   );
