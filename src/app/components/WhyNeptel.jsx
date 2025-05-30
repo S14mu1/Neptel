@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BentoGrid, BentoCard } from "@/app/components/magicui/bento-grid";
 import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare, Files } from 'lucide-react';
 import { IconCloud } from "@/app/components/magicui/icon-cloud";
@@ -60,6 +60,42 @@ const llmLogos = [
   "/llm-logos/baichun.svg",
 ];
 
+const NetworkBackground = () => {
+  const vantaRef = useRef(null);
+  const [vantaEffect, setVantaEffect] = useState(null);
+
+  useEffect(() => {
+    if (!vantaEffect) {
+      import('vanta/dist/vanta.net.min').then((VANTA) => {
+        setVantaEffect(
+          VANTA.default({
+            el: vantaRef.current,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: true,
+            minHeight: 300,
+            minWidth: 200,
+            scale: 1.0,
+            scaleMobile: 1.0,
+            color: 0x4b8fff,
+            backgroundColor: 0x0B0F14,
+            points: 4,
+            maxDistance: 36,
+            spacing: 15,
+            showDots: true,
+            backgroundAlpha: 0
+          })
+        );
+      });
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+
+  return <div ref={vantaRef} className="absolute inset-0 opacity-50" />;
+};
+
 const features = [
   {
     Icon: () => <Server className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
@@ -69,8 +105,8 @@ const features = [
     cta: "Get Started",
     background: (
       <div className="relative w-full h-full">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
-        
+        <NetworkBackground />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B0F14]/80 to-transparent transition-all duration-300 group-hover:from-[#0B0F14]/70">
         </div>
       </div>
     ),
