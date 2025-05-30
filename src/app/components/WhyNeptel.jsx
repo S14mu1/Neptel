@@ -5,6 +5,43 @@ import { BentoGrid, BentoCard } from "@/app/components/magicui/bento-grid";
 import { Shield, Server, Smartphone, Cloud, Building2, BarChart, MessageSquare, Files } from 'lucide-react';
 import { IconCloud } from "@/app/components/magicui/icon-cloud";
 import Image from 'next/image';
+import { Marquee } from "@/app/components/magicui/marquee";
+
+const files = [
+  {
+    name: "handbook.pdf",
+    body: "This handbook serves as a guide to our values, expectations, and everyday operations at...",
+  },
+  {
+    name: "api_guide.docx",
+    body: "Use this document to integrate smoothly with our platform and avoid common implementation issues",
+  },
+  {
+    name: "battlecards.pptx",
+    body: "These cards equip sales reps with quick insights to win deals and counter top competitors.",
+  },
+  {
+    name: "audit_list.xlsx",
+    body: "Follow this checklist to ensure your team is fully prepared for the upcoming SOC 2 audit.",
+  },
+  {
+    name: "faqs.xlsx",
+    body: "Compiled from real support tickets, this FAQ helps streamline the onboarding experience for new clients.",
+  },
+  {
+    name: "q4_budget.xlsx",
+    body: "This file outlines departmental spend vs. allocation for Q4, along with variance analysis and key financial highlights.",
+  },
+  {
+    name: "arch_overview.pdf",
+    body: "This document provides a high-level view of our current infrastructure, including data flow, core services, and security layers.",
+  },
+  {
+    name: "migration_plan.docx",
+    body: "The following plan outlines phases, dependencies, and risk mitigation strategies for our cloud infrastructure migration.",
+  },
+];
+
 
 const llmLogos = [
   "/llm-logos/meta.svg",
@@ -31,7 +68,11 @@ const features = [
     href: "/security",
     cta: "Get Started",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]" />
+      <div className="relative w-full h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
+        
+        </div>
+      </div>
     ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
@@ -40,9 +81,34 @@ const features = [
     name: "AI-Powered Knowledge Vault",
     description: "Transform internal documents into a knowledge base — fully secured within your infrastructure.",
     href: "/rag-capabilities",
-    cta: "Learn More",
+    cta: "Get Started",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]" />
+      <div className="relative w-full h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
+          <Marquee
+            pauseOnHover
+            className="absolute top-1 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]"
+          >
+            {files.map((file, idx) => (
+              <figure
+                key={idx}
+                className="relative w-35 cursor-pointer overflow-hidden rounded-xl border p-4 mx-2
+                  border-white/[0.1] bg-white/[0.01] hover:bg-white/[0.05]
+                  transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+              >
+                <div className="flex flex-row items-center gap-2">
+                  <div className="flex flex-col">
+                    <figcaption className="text-sm font-medium text-white">
+                      {file.name}
+                    </figcaption>
+                  </div>
+                </div>
+                <blockquote className="mt-2 text-xs text-gray-400">{file.body}</blockquote>
+              </figure>
+            ))}
+          </Marquee>
+        </div>
+      </div>
     ),
     className: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
@@ -73,7 +139,11 @@ const features = [
     href: "/integration",
     cta: "Get Started",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]" />
+      <div className="relative w-full h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
+        
+        </div>
+      </div>
     ),
     className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
@@ -84,7 +154,11 @@ const features = [
     href: "/analytics",
     cta: "Get Started",
     background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]" />
+      <div className="relative w-full h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
+        
+        </div>
+      </div>
     ),
     className: "lg:col-span-3 lg:row-start-3 lg:row-end-4 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
