@@ -1,6 +1,7 @@
 import Hero from "@/app/components/Hero";
 import ProblemStatement from "@/app/components/ProblemStatement";
 import VelocityScrollingData from "@/app/components/VelocityScrollingData";
+import SolutionStatement from "@/app/components/SolutionStatement";
 import Features from "@/app/components/Features";
 import VisionMission from "@/app/components/VisionMission";
 import WhyNeptel from "@/app/components/WhyNeptel";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <ProblemStatement />
       <VelocityScrollingData />
+      <SolutionStatement />
       <Features />
       <VisionMission />
       <WhyNeptel />
