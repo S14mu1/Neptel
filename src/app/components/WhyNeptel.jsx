@@ -232,10 +232,19 @@ const features = [
           <div className="flex justify-center lg:justify-start lg:pl-[55%] items-start pt-1 lg:items-center">
             <div className="w-[280px] sm:w-[380px] md:w-[480px]">
               <Terminal className="scale-85 sm:scale-85">
-                <TypingAnimation>npm install @neptel/core</TypingAnimation>
-                <TypingAnimation>Initializing secure environment...</TypingAnimation>
-                <TypingAnimation>Setting up end-to-end encryption...</TypingAnimation>
-                <TypingAnimation>✓ Your data is now protected</TypingAnimation>
+                <TypingAnimation>&gt; install @neptel/core</TypingAnimation>
+
+                <AnimatedSpan delay={4000} className="text-blue-500">
+                  <span>ℹ Initializing secure environment</span>
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={7000} className="text-green-500">
+                  <span>✔ Configuring end-to-end encryption</span>
+                </AnimatedSpan>
+
+                <TypingAnimation delay={10000} className="text-muted-foreground">
+                  Environment secured. Your data stays in your infrastructure.
+                </TypingAnimation>
               </Terminal>     
             </div>
           </div>
