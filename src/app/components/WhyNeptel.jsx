@@ -131,6 +131,64 @@ const ProgressCircle = ({ delay = 0 }) => {
   );
 };
 
+const LoopingTerminal = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [key, setKey] = useState(0);
+  const terminalRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (terminalRef.current) {
+      observer.observe(terminalRef.current);
+    }
+
+    return () => {
+      if (terminalRef.current) {
+        observer.unobserve(terminalRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      const interval = setInterval(() => {
+        setKey(prev => prev + 1);
+      }, 20000); // Reset every 20 seconds (after animation completes)
+
+      return () => clearInterval(interval);
+    }
+  }, [isVisible]);
+
+  if (!isVisible) {
+    return <div ref={terminalRef} className="h-full" />;
+  }
+
+  return (
+    <div ref={terminalRef}>
+      <Terminal key={key} className="scale-85 sm:scale-85">
+        <TypingAnimation>&gt; install @neptel/core</TypingAnimation>
+        <AnimatedSpan delay={4000} className="text-blue-500">
+          <span>ℹ Initializing secure environment</span>
+        </AnimatedSpan>
+        <AnimatedSpan delay={7000} className="text-green-500">
+          <span>✔ Configuring end-to-end encryption</span>
+        </AnimatedSpan>
+        <TypingAnimation delay={10000} className="text-muted-foreground">
+          Environment secured. Your data stays in your infrastructure.
+        </TypingAnimation>
+      </Terminal>
+    </div>
+  );
+};
+
 const features = [
   {
     Icon: () => <Server className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
@@ -231,21 +289,7 @@ const features = [
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
           <div className="flex justify-center lg:justify-start lg:pl-[55%] items-start pt-1 lg:items-center">
             <div className="w-[280px] sm:w-[380px] md:w-[480px]">
-              <Terminal className="scale-85 sm:scale-85">
-                <TypingAnimation>&gt; install @neptel/core</TypingAnimation>
-
-                <AnimatedSpan delay={4000} className="text-blue-500">
-                  <span>ℹ Initializing secure environment</span>
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={7000} className="text-green-500">
-                  <span>✔ Configuring end-to-end encryption</span>
-                </AnimatedSpan>
-
-                <TypingAnimation delay={10000} className="text-muted-foreground">
-                  Environment secured. Your data stays in your infrastructure.
-                </TypingAnimation>
-              </Terminal>     
+              <LoopingTerminal />
             </div>
           </div>
         </div>
