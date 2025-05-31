@@ -215,9 +215,9 @@ const features = [
     className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3 backdrop-blur-sm border border-white/[0.08] group hover:border-white/[0.15] transition-colors",
   },
   {
-    Icon: () => <BarChart className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
-    name: "Advanced Analytics",
-    description: "Comprehensive insights into your AI operations. Monitor performance, usage patterns, and optimization opportunities.",
+    Icon: () => <Shield className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+    name: "Robust Data Protection",
+    description: "All data is encrypted end-to-end and stored privately on your servers. Nothing leaves your infrastructure, ever.",
     href: "/analytics",
     cta: "Get Started",
     background: (
