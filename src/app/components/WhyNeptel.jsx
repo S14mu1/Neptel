@@ -7,6 +7,12 @@ import { IconCloud } from "@/app/components/magicui/icon-cloud";
 import Image from 'next/image';
 import { Marquee } from "@/app/components/magicui/marquee";
 import { AnimatedCircularProgressBar } from "@/app/components/magicui/animated-circular-progress-bar";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/app/components/magicui/terminal";
+
 
 const files = [
   {
@@ -223,7 +229,16 @@ const features = [
     background: (
       <div className="relative w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-transparent transition-all duration-300 group-hover:from-white/[0.12] group-hover:to-white/[0.04]">
-        
+          <div className="flex justify-center lg:justify-start lg:pl-[55%] items-start pt-1 lg:items-center">
+            <div className="w-[280px] sm:w-[380px] md:w-[480px]">
+              <Terminal className="scale-85 sm:scale-85">
+                <TypingAnimation>npm install @neptel/core</TypingAnimation>
+                <TypingAnimation>Initializing secure environment...</TypingAnimation>
+                <TypingAnimation>Setting up end-to-end encryption...</TypingAnimation>
+                <TypingAnimation>✓ Your data is now protected</TypingAnimation>
+              </Terminal>     
+            </div>
+          </div>
         </div>
       </div>
     ),
